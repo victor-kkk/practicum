@@ -8,11 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var decrementButton: UIButton!
-    @IBOutlet weak var incrementButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var history: UITextView!
+    @IBOutlet weak private var label: UILabel!
+    @IBOutlet weak private var decrementButton: UIButton!
+    @IBOutlet weak private var incrementButton: UIButton!
+    @IBOutlet weak private var resetButton: UIButton!
+    @IBOutlet weak private var history: UITextView!
     
     private enum ActionType {
         case decrement
@@ -27,16 +27,16 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func decrementButtonDidTap() {
+    @IBAction private func decrementButtonDidTap() {
         let action: ActionType = counterValue > 0 ? .decrement : .invalidDecrement
         handleAction(action)
     }
     
-    @IBAction func incrementButtonDidTap() {
+    @IBAction private func incrementButtonDidTap() {
         handleAction(.increment)
     }
     
-    @IBAction func resetButtonDidTap() {
+    @IBAction private func resetButtonDidTap() {
         handleAction(.reset)
     }
     
