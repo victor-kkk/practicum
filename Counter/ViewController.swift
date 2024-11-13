@@ -8,18 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak private var label: UILabel!
-    @IBOutlet weak private var decrementButton: UIButton!
-    @IBOutlet weak private var incrementButton: UIButton!
-    @IBOutlet weak private var resetButton: UIButton!
-    @IBOutlet weak private var history: UITextView!
-    
     private enum ActionType {
         case decrement
         case invalidDecrement
         case increment
         case reset
     }
+
+    @IBOutlet weak private var label: UILabel!
+    @IBOutlet weak private var decrementButton: UIButton!
+    @IBOutlet weak private var incrementButton: UIButton!
+    @IBOutlet weak private var resetButton: UIButton!
+    @IBOutlet weak private var history: UITextView!
     
     private var counterValue: Int = 0 {
         didSet {
@@ -27,23 +27,10 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction private func decrementButtonDidTap() {
-        let action: ActionType = counterValue > 0 ? .decrement : .invalidDecrement
-        handleAction(action)
-    }
-    
-    @IBAction private func incrementButtonDidTap() {
-        handleAction(.increment)
-    }
-    
-    @IBAction private func resetButtonDidTap() {
-        handleAction(.reset)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     private func handleAction(_ action: ActionType) {
         let currentTime = Date().formatted(date: .numeric, time: .shortened)
         
@@ -63,5 +50,18 @@ class ViewController: UIViewController {
         }
         
         history.text.append(change)
+    }
+    
+    @IBAction private func decrementButtonDidTap() {
+        let action: ActionType = counterValue > 0 ? .decrement : .invalidDecrement
+        handleAction(action)
+    }
+    
+    @IBAction private func incrementButtonDidTap() {
+        handleAction(.increment)
+    }
+    
+    @IBAction private func resetButtonDidTap() {
+        handleAction(.reset)
     }
 }
