@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     private enum ActionType {
         case decrement
         case invalidDecrement
